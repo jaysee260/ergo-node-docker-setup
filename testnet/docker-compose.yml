@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+  node:
+    image: ergoplatform/ergo
+    container_name: ergo-node-testnet
+    ports:
+      - 9052:9052
+      - 9030:9030
+    environment:
+      - MAX_HEAP=3G
+    volumes:
+      - ~/ergo/testnet/data:/home/ergo/.ergo
+      - ~/ergo/testnet/ergo.conf:/etc/ergo.conf
+    restart: unless-stopped
+    command: --testnet -c /etc/ergo.conf

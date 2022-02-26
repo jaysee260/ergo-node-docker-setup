@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+  node:
+    image: ergoplatform/ergo
+    container_name: ergo-node-mainnet
+    ports:
+      - 9053:9053
+      - 9030:9030
+    environment:
+      - MAX_HEAP=4G
+    volumes:
+      - ~/ergo/mainnet/data:/home/ergo/.ergo
+      - ~/ergo/mainnet/ergo.conf:/etc/ergo.conf
+    restart: unless-stopped
+    command: --mainnet -c /etc/ergo.conf
